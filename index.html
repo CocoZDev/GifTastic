@@ -29,33 +29,37 @@ Created 7/17/2017 -->
 		<!-- Row #1: Title -->
 		<div class="row">
 			<div class="col-lg-12 col-md-12 col-sm-12">
-				<h1><center>GifTastic</center></h1>
+				<h1><center>GifTastic - Animals!</center></h1>
 				<hr>
 			</div>
 		</div>
 
-		<!-- Row #2: Pre-Built Buttons   -->
+		<!-- Row #2: Buttons   -->
 		<div class="row">
-			<div class="col-lg-8 col-md-8 col-sm-8">
-				
+			<div class="col-lg-8 col-md-8 col-sm-8" align="left">
+				<div id="buttons"></div>
 			</div>			
 		
 		<!-- Row #2: Form with Custom Input -->		
 			<div class="col-lg-4 col-md-4 col-sm-4">
 				<form class="form">
 				  <div class="form-group">
-				    <label for="exampleInputName2"><h4>Add an Animal!</h4></label>
-				    <input type="text" class="form-control" id="exampleInputName2" placeholder="i.e. bunny">	
+				    <label for="animalInput"><h4>Add an Animal!</h4></label>
+				    <input type="text" class="form-control" id="input" placeholder="i.e. panda">	
 				  </div>			  
-				  <button type="submit" class="btn btn-primary btn-md">Submit</button>
+				  <button type="submit" class="btn btn-primary btn-md" id="submit">Submit</button>
 				  
 				</form>
 			</div>			
 		</div>
 
-		<!-- Row #3: Gifs -->
+		<!-- Row #3: Gif Images -->
 		<div class="row">
 			<div class="col-lg-12 col-md-12 col-sm-12">
+				<p>
+					<div id="gifs"></div>
+					<div id="rating"></div>
+				</p>
 
 			</div>
 		</div>
