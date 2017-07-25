@@ -7,7 +7,7 @@ console.log ("app.js file has started.");
 //------Buttons------
 
 	// Topic Array. Your app should take the topics in this array and create buttons in your HTML.
-	var topics = ["cat", "dog", "bird", "hamster", "red panda", "hedgehog", "grumpy cat", "jellyfish"];
+	var topics = ["cat", "grumpy cat", "dog", "bird", "hamster", "goat", "hedgehog", "monkey", "sloth", "otter"];
 	var i = 0; // for API Query URL
 
 	console.log(topics)
@@ -30,6 +30,8 @@ console.log ("app.js file has started.");
 		  var a = $("<button>");
 		  // Adding a class
 		  a.addClass("btn btn-primary btn-md");
+		  // Adding button type
+		  a.attr("type", "button");
 		  // Adding a data-attribute with a value of the animal at index i
 		  a.attr("data-input", topics[i]);
 		  // Providing the button's text with a value of the animal at index i
@@ -74,7 +76,7 @@ $(".btn").on("click", function(){
 
 	// In this case, the "this" keyword refers to the button that was clicked
 	var searchTerm = $(this).attr("data-input");
-	var limit = 10;
+	var limit = 5;
 
 	//Guiyu's API Key: Api Key: 95ad6144828c471dbb77004f8e9e8d7f
     var queryURL = "http://api.giphy.com/v1/gifs/search?api_key=95ad6144828c471dbb77004f8e9e8d7f" + "&q=" + searchTerm + "&limit=" + limit;
@@ -97,25 +99,29 @@ $(".btn").on("click", function(){
 		for (var j = 0; j < limit; j++) {
 			// var imageUrl = results.image_original_url;
 
-			var imageUrl = results[j].images.fixed_height_still.url;
+			var stillImageUrl = results[j].images.original_still.url;
+			var animateImageUrl = results[j].images.original.url;
 
-			console.log(imageUrl);
+			console.log(stillImageUrl);
+			console.log(animateImageUrl);
 
 			// Creating and storing an image tag
 			var animalImage = $("<img>");
 
 			// Setting the catImage src attribute to imageUrl
-			animalImage.attr("src", imageUrl);
+			animalImage.attr("src", stillImageUrl);
 			animalImage.attr("alt", "animal image");
 			animalImage.attr("width", 200);
 			animalImage.attr("height", 200);
+			animalImage.attr("data-still", stillImageUrl);
+			animalImage.attr("data-animate", animateImageUrl);
+			animalImage.attr("data-state", "still");
+			animalImage.attr("class", "gif");
 			// var animalImageP = "<p>" + animalImage +"</p>";
 
 			// Prepending the catImage to the images div
 			// $("#gifs").append(animalImage);
 
-			// When the user clicks one of the still GIPHY images, the gif should animate. If the user clicks the gif again, it should stop playing.
-			
 			// Under every gif, display its rating (PG, G, so on).
 			// $("#gifs").append("<p> Rating: " + results[j].rating + "</p>");
 
@@ -126,9 +132,26 @@ $(".btn").on("click", function(){
 			imageContainer.append("<p> Rating: " + results[j].rating + "</p>");
 
 			$("#gifs").append(imageContainer);
-			// This data is provided by the GIPHY API.
-
 		}
+			
+			// ===== PLAY AND PAUSE WHEN CLICKING ON IMAGES =====//
+
+
+			// When the user clicks one of the still GIPHY images, the gif should animate. If the user clicks the gif again, it should stop playing.
+			$(".gif").on("click", function() {
+		      // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
+		      var state = $(this).attr("data-state");
+		      // If the clicked image's state is still, update its src attribute to what its data-animate value is.
+		      // Then, set the image's data-state to animate
+		      // Else set src to the data-still value
+		      if (state === "still") {
+		        $(this).attr("src", $(this).attr("data-animate"));
+		        $(this).attr("data-state", "animate");
+		      } else {
+		        $(this).attr("src", $(this).attr("data-still"));
+		        $(this).attr("data-state", "still");
+		      }
+		    });
 	});
 });
 
