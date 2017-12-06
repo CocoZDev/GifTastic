@@ -12,7 +12,7 @@ console.log ("app.js file has started.");
 	// ================================================================================
 	// ---Function 1: rendering buttons---
 
-	function renderButtons() {
+	function renderButtons(topics) {
 
 		// Deleting the animal buttons prior to adding new animal buttons
 		// (this is necessary otherwise we will have repeat buttons)
@@ -39,7 +39,7 @@ console.log ("app.js file has started.");
 	}
 
 		//Calling the function
-		renderButtons();
+		renderButtons(topics);
 	// ================================================================================
 	//---Function 2: Create Custom Buttons & Submit button on click event---
 	// Add a form to your page takes the value from a user input box and adds it into your topics array. 
@@ -53,21 +53,28 @@ console.log ("app.js file has started.");
 	event.preventDefault();
 
 	// This line will grab the text from the input box
-	var input = $("#input").val().trim();
-	// The movie from the textbox is then added to our array
-	topics.push(input);
+	var searchTerm = $("#input").val().trim();
 
-	console.log("new input = " + input);
+	console.log (searchTerm);
+	// The input from the textbox is then added to our array
+	topics.push(searchTerm);
 
-	// calling renderButtons which handles the processing of our movie array
-	renderButtons();
+	console.log (topics);
+
+	console.log("new input = " + searchTerm);
+
+	// calling renderButtons which handles the processing of our array
+	renderButtons(topics);
+	$("#gifs").empty();
+	generateGifs(topics);
+	console.log (topics);
 	});
 
 // ================================================================================
 // GIPHY API
 // When the user clicks on a button, the page should grab 10 static, non-animated gif images from the GIPHY API and place them on the page.
 
-$(".btn").on("click", function generateGifs(){
+$(".btn").on("click", function generateGifs(topics){
 	//Clear any existing gifs
 	$("#gifs").empty();
 
