@@ -75,7 +75,6 @@ $(".btn").on("click", function generateGifs(){
 	var searchTerm = $(this).attr("data-input");
 	var limit = 30;
 
-	//Guiyu's API Key: Api Key: 95ad6144828c471dbb77004f8e9e8d7f
     var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=95ad6144828c471dbb77004f8e9e8d7f" + "&q=" + searchTerm + "&limit=" + limit;
     console.log(queryURL);
 
