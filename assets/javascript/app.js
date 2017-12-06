@@ -4,7 +4,7 @@ console.log ("app.js file has started.");
 //------Buttons------
 
 	// Topic Array. Your app should take the topics in this array and create buttons in your HTML.
-	var topics = ["bunny", "cat", "grumpy cat", "dog", "bird", "hamster", "goat", "hedgehog", "monkey", "sloth", "otter"];
+	var topics = ["bunny", "cat", "dog", "penguin", "panda", "hamster", "guinea pig", "hedgehog"];
 	var i = 0; // for API Query URL
 
 	console.log(topics)
@@ -109,7 +109,7 @@ $(".btn").on("click", function generateGifs(){
 			animalImage.attr("src", stillImageUrl);
 			animalImage.attr("alt", "animal image");
 			animalImage.attr("width", "100%");
-			animalImage.attr("max-height", "250px");
+			animalImage.attr("height", "250px");
 			animalImage.attr("data-still", stillImageUrl);
 			animalImage.attr("data-animate", animateImageUrl);
 			animalImage.attr("data-state", "still");
@@ -117,9 +117,13 @@ $(".btn").on("click", function generateGifs(){
 			
 			// Add div and aaround image & rating
 
+			var imageCropper = $("<div>");
+			imageCropper.attr("class", "img-cropper")
+			imageCropper.append(animalImage);
+
 			var imageContainerDiv = $("<div>");
-			imageContainerDiv.attr("class", "col-md-4 img-cropper")
-			imageContainerDiv.append(animalImage);
+			imageContainerDiv.attr("class", "col-md-4")
+			imageContainerDiv.append(imageCropper);
 			imageContainerDiv.append("<p> Rating: " + results[j].rating + "</p>");
 
 			$("#gifs").append(imageContainerDiv);
