@@ -1,6 +1,3 @@
-// Author: Guiyu (Zoey) Zhao
-// Created 7/4/2017
-// Candy Collection Game
 
 console.log ("app.js file has started.");
 // ================================================================================
@@ -70,7 +67,7 @@ console.log ("app.js file has started.");
 // GIPHY API
 // When the user clicks on a button, the page should grab 10 static, non-animated gif images from the GIPHY API and place them on the page.
 
-$(".btn").on("click", function(){
+$(".btn").on("click", function generateGifs(){
 	//Clear any existing gifs
 	$("#gifs").empty();
 
@@ -154,4 +151,5 @@ $(".btn").on("click", function(){
 		    });
 	});
 });
+
 
