@@ -4,7 +4,7 @@ console.log ("app.js file has started.");
 //------Buttons------
 
 	// Topic Array. Your app should take the topics in this array and create buttons in your HTML.
-	var topics = ["bunny", "cat", "dog", "penguin", "panda", "hamster", "guinea pig", "hedgehog"];
+	var topics = ["bunny", "kitten", "puppy", "penguin", "panda", "hamster", "guinea pig", "hedgehog"];
 	var i = 0; // for API Query URL
 
 	console.log(topics)
@@ -150,4 +150,8 @@ $(".btn").on("click", function generateGifs(){
 	});
 });
 
+app.set('port',(process.env.PORT||5000));
 
+app.listen(app.get('port'),function(){
+
+})
