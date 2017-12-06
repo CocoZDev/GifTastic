@@ -4,7 +4,7 @@ console.log ("app.js file has started.");
 //------Buttons------
 
 	// Topic Array. Your app should take the topics in this array and create buttons in your HTML.
-	var topics = ["cat", "grumpy cat", "dog", "bird", "hamster", "goat", "hedgehog", "monkey", "sloth", "otter"];
+	var topics = ["bunny", "cat", "grumpy cat", "dog", "bird", "hamster", "goat", "hedgehog", "monkey", "sloth", "otter"];
 	var i = 0; // for API Query URL
 
 	console.log(topics)
@@ -73,7 +73,7 @@ $(".btn").on("click", function generateGifs(){
 
 	// In this case, the "this" keyword refers to the button that was clicked
 	var searchTerm = $(this).attr("data-input");
-	var limit = 5;
+	var limit = 30;
 
 	//Guiyu's API Key: Api Key: 95ad6144828c471dbb77004f8e9e8d7f
     var queryURL = "http://api.giphy.com/v1/gifs/search?api_key=95ad6144828c471dbb77004f8e9e8d7f" + "&q=" + searchTerm + "&limit=" + limit;
@@ -108,27 +108,21 @@ $(".btn").on("click", function generateGifs(){
 			// Setting the catImage src attribute to imageUrl
 			animalImage.attr("src", stillImageUrl);
 			animalImage.attr("alt", "animal image");
-			animalImage.attr("width", 200);
-			animalImage.attr("height", 200);
+			animalImage.attr("width", "100%");
+			animalImage.attr("max-height", "250px");
 			animalImage.attr("data-still", stillImageUrl);
 			animalImage.attr("data-animate", animateImageUrl);
 			animalImage.attr("data-state", "still");
 			animalImage.attr("class", "gif");
-			// var animalImageP = "<p>" + animalImage +"</p>";
+			
+			// Add div and aaround image & rating
 
-			// Prepending the catImage to the images div
-			// $("#gifs").append(animalImage);
+			var imageContainerDiv = $("<div>");
+			imageContainerDiv.attr("class", "col-md-4 img-cropper")
+			imageContainerDiv.append(animalImage);
+			imageContainerDiv.append("<p> Rating: " + results[j].rating + "</p>");
 
-			// Under every gif, display its rating (PG, G, so on).
-			// $("#gifs").append("<p> Rating: " + results[j].rating + "</p>");
-
-			// Add div around image & rating
-			var imageContainer = $("<div>");
-
-			imageContainer.append(animalImage);
-			imageContainer.append("<p> Rating: " + results[j].rating + "</p>");
-
-			$("#gifs").append(imageContainer);
+			$("#gifs").append(imageContainerDiv);
 		}
 			
 			// ===== PLAY AND PAUSE WHEN CLICKING ON IMAGES =====//

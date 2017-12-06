@@ -18,6 +18,9 @@
 	integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
 	crossorigin="anonymous"></script>
 
+	<!-- Fontawesome CDN -->
+	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4..0/css/font-awesome.min.css" rel="stylesheet">
+	
 </head>
 
 <body center>
@@ -27,8 +30,7 @@
 		<div class="row">
 			<div class="col-lg-12 col-md-12 col-sm-12">
 				<h1>GifTastic - Animals!</h1>
-				<h4>See funny and cute animal gifs by clicking on the buttons below or create new buttons with the animals of your choice!</h4>
-				<h4>Click on the gifs to play and stop the animation.</h4>
+				<h4>See funny and cute animal gifs by clicking on the buttons below or create animal category of your choice!</h4>
 				<h3>HAVE FUN!!! &#9786;</h3>
 				<hr>
 			</div>
@@ -36,18 +38,21 @@
 
 		<!-- Row #2: Buttons   -->
 		<div class="row">
-			<div class="col-lg-8 col-md-8 col-sm-8" align="left">
+			<div class="col-lg-6 col-md-6 col-sm-6" align="left">
+				<h4 style="text-align: center">Search by a category:</h4>
 				<div id="buttons"></div>
 			</div>			
 		
 		<!-- Row #2: Form with Custom Input -->		
-			<div class="col-lg-4 col-md-4 col-sm-4">
+			<div class="col-lg-6 col-md-6 col-sm-6">
 				<form class="form">
 				  <div class="form-group">
-				    <label for="animalInput"><h4>Add an Animal!</h4></label>
-				    <input type="text" class="form-control" id="input" placeholder="i.e. duck">	
-				  </div>			  
-				  <button type="submit" class="btn btn-primary btn-md" id="submit">Submit</button>
+					<label for="animalInput"><h4>Add an animal category:</h4></label>
+					<div class="col-md-10 col-md-offset-1">
+						<input type="text" class="form-control" id="input" placeholder="i.e. duck">	
+						<br>
+					<button type="submit" class="btn btn-primary btn-md" id="submit">Submit</button>
+					</div>			  
 				  
 				</form>
 			</div>			
@@ -61,12 +66,13 @@
 
 		<!-- Row #4: Gif Images -->
 		<div class="row">
-			<div class="col-lg-12 col-md-12 col-sm-12">
-				<h3>GIF Images:</h3>
-				<p>
-					<div id="gifs"></div>
-				</p>
-
+			<div class="col-lg-12 col-md-12 col-sm-12 gif-container">
+				<h3>GIF Images Search Results</h3>
+				<h4>Click on the gif images to play or stop the animation.</h4>
+				
+				<ul id="gifs">
+					
+				</ul>
 			</div>
 		</div>
 	</div>
