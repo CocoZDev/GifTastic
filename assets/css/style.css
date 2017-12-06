@@ -14,9 +14,9 @@ body {
     margin: 0;
     padding-bottom: 150px;
     min-height: 100%;
-    font-family: 'Playfair Display', serif;    
-	font-size: 18px;
-    background: url("../images/dark_wood_@2X.png");
+    /* font-family: 'Nunito', sans-serif !important; */
+    font-size: 18px;
+    /* background: url("../images/dark_wood_@2X.png"); */
     background-repeat: no-repeat;
     text-align: center;
     color: white;
@@ -29,19 +29,27 @@ body {
 
 }
 
+
+
 h1, h2, h3, h4, h5, h6, body {
-    font-family: 'Arimo', sans-serif !important;
+    font-family: 'Nunito', sans-serif !important;
 }
 
 h1,
 h2,
 h3 {
-    font-weight: 700;
+    font-weight: 700 !important;
     color: white;
+    text-shadow: 2px 2px 5px black;
 }
 
 h1 {
-    padding: 10px 0 30px 0;
+    padding: 10px 0 15px 0;
+    color: #fa4ea4 !important;
+}
+
+h4 {
+    font-style: italic;
 }
 
 .container {
@@ -62,12 +70,12 @@ h1 {
 }
 
 .img-cropper {
-    border: 2px solid white;
+    border: 5px solid white;
     vertical-align: middle;
 }
 
 .img-cropper:hover {
-    border: 2px solid rgb(3, 194, 252);
+    border: 5px solid #fa4ea4 ;
     height: auto;
 }
 
@@ -103,7 +111,7 @@ footer {
     padding: 14px 24px;
     margin: 10px;
     border: 0 none;
-    font-weight: 700;
+    font-weight: 1000 !important;
     letter-spacing: 1px;
     text-transform: uppercase;
 }
@@ -113,17 +121,20 @@ footer {
 }
  
 .btn-primary {
-    background: #0099cc;
-    color: #ffffff;
+    background: #fa4ea4 !important;
+    color: black !important;
+    box-shadow: 2px 2px 5px black;
+    border: none !important;
 }
  
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
-    background: #33a6cc;
+    background: #fa4ea4 !important;
 }
  
 .btn-primary:active, .btn-primary.active {
-    background: #007299;
-    box-shadow: none;
+    background: #fa4ea4 !important;
+    border: none !important;
+
 }
 
 .btn-lg.round {
