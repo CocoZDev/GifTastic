@@ -1,85 +1,53 @@
-
 console.log ("app.js file has started.");
 // ================================================================================
+// Topic Array. Your app should take the topics in this array and create buttons in your HTML.
+var topics = ["bunny", "kitten", "puppy", "penguin", "panda", "hamster", "guinea pig", "hedgehog"];
+var i = 0; // for API Query URL
+
+console.log(topics)
+
+
 //------Buttons------
 
-	// Topic Array. Your app should take the topics in this array and create buttons in your HTML.
-	var topics = ["bunny", "kitten", "puppy", "penguin", "panda", "hamster", "guinea pig", "hedgehog"];
-	var i = 0; // for API Query URL
-
-	console.log(topics)
-
-	// ================================================================================
-	// ---Function 1: rendering buttons---
-
-	function renderButtons(topics) {
-
-		// Deleting the animal buttons prior to adding new animal buttons
-		// (this is necessary otherwise we will have repeat buttons)
-		$("#buttons").empty();
-
-		//Try using a loop that appends a button for each string in the array.
-		// Looping through the array of itmes
-		for (var i = 0; i < topics.length; i++) {
-
-		  // Then dynamicaly generating buttons for each item in the array.
-		  // This code $("<button>") is all jQuery needs to create the start and end tag. (<button></button>)
-		  var a = $("<button>");
-		  // Adding a class
-		  a.addClass("btn btn-primary btn-md");
-		  // Adding button type
-		  a.attr("type", "button");
-		  // Adding a data-attribute with a value of the animal at index i
-		  a.attr("data-input", topics[i]);
-		  // Providing the button's text with a value of the animal at index i
-		  a.text(topics[i]);
-		  // Adding the button to the HTML
-		  $("#buttons").append(a);
-		}
-	}
-
-		//Calling the function
-		renderButtons(topics);
-	// ================================================================================
-	//---Function 2: Create Custom Buttons & Submit button on click event---
-	// Add a form to your page takes the value from a user input box and adds it into your topics array. 
-	// Then make a function call that takes each topic in the array remakes the buttons on the page.
-
-
-	// This function handles events where one button is clicked
-	$("#submit").on("click", function() {
-	// event.preventDefault() prevents the form from trying to submit itself.
-	// We're using a form so that the user can hit enter instead of clicking the button if they want
-	event.preventDefault();
-
-	// This line will grab the text from the input box
-	var searchTerm = $("#input").val().trim();
-
-	console.log (searchTerm);
-	// The input from the textbox is then added to our array
-	topics.push(searchTerm);
-
-	console.log (topics);
-
-	console.log("new input = " + searchTerm);
-
-	// calling renderButtons which handles the processing of our array
-	renderButtons(topics);
-	$("#gifs").empty();
-	generateGifs(topics);
-	console.log (topics);
-	});
-
 // ================================================================================
-// GIPHY API
-// When the user clicks on a button, the page should grab 10 static, non-animated gif images from the GIPHY API and place them on the page.
+// ---Function 1: rendering buttons---
 
-$(".btn").on("click", function generateGifs(topics){
+function renderButtons(topics) {
+	
+	// Deleting the animal buttons prior to adding new animal buttons
+	// (this is necessary otherwise we will have repeat buttons)
+	$("#buttons").empty();
+
+	//Try using a loop that appends a button for each string in the array.
+	// Looping through the array of itmes
+	for (var i = 0; i < topics.length; i++) {
+
+		// Then dynamicaly generating buttons for each item in the array.
+		// This code $("<button>") is all jQuery needs to create the start and end tag. (<button></button>)
+		var a = $("<button>");
+		// Adding a class
+		a.addClass("btn btn-primary btn-md category-btn");
+		// Adding button type
+		a.attr("type", "button");
+		// Adding a data-attribute with a value of the animal at index i
+		a.attr("data-input", topics[i]);
+		// Providing the button's text with a value of the animal at index i
+		a.text(topics[i]);
+		// Adding the button to the HTML
+		$("#buttons").append(a);
+	}
+}
+
+	//Calling the function
+	renderButtons(topics);
+	generateGifs(topics, "bunny");
+
+function generateGifs(topics, searchTerm){
 	//Clear any existing gifs
 	$("#gifs").empty();
 
 	// In this case, the "this" keyword refers to the button that was clicked
-	var searchTerm = $(this).attr("data-input");
+	// var searchTerm = $(this).attr("data-input");
 	var limit = 30;
 
     var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=95ad6144828c471dbb77004f8e9e8d7f" + "&q=" + searchTerm + "&limit=" + limit;
@@ -135,29 +103,69 @@ $(".btn").on("click", function generateGifs(topics){
 			$("#gifs").append(imageContainerDiv);
 		}
 			
-			// ===== PLAY AND PAUSE WHEN CLICKING ON IMAGES =====//
+		// ===== PLAY AND PAUSE WHEN CLICKING ON IMAGES =====//
 
 
-			// When the user clicks one of the still GIPHY images, the gif should animate. If the user clicks the gif again, it should stop playing.
-			$(".gif").on("click", function() {
-		      // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
-		      var state = $(this).attr("data-state");
-		      // If the clicked image's state is still, update its src attribute to what its data-animate value is.
-		      // Then, set the image's data-state to animate
-		      // Else set src to the data-still value
-		      if (state === "still") {
-		        $(this).attr("src", $(this).attr("data-animate"));
-		        $(this).attr("data-state", "animate");
-		      } else {
-		        $(this).attr("src", $(this).attr("data-still"));
-		        $(this).attr("data-state", "still");
-		      }
-		    });
+		// When the user clicks one of the still GIPHY images, the gif should animate. If the user clicks the gif again, it should stop playing.
+		$(".gif").on("click", function() {
+			// The attr jQuery method allows us to get or set the value of any attribute on our HTML element
+			var state = $(this).attr("data-state");
+			// If the clicked image's state is still, update its src attribute to what its data-animate value is.
+			// Then, set the image's data-state to animate
+			// Else set src to the data-still value
+			if (state === "still") {
+			$(this).attr("src", $(this).attr("data-animate"));
+			$(this).attr("data-state", "animate");
+			} else {
+			$(this).attr("src", $(this).attr("data-still"));
+			$(this).attr("data-state", "still");
+			}
+		});
 	});
+}
+
+
+// ================================================================================
+//---Function 2: Create Custom Buttons & Submit button on click event---
+// Add a form to your page takes the value from a user input box and adds it into your topics array. 
+// Then make a function call that takes each topic in the array remakes the buttons on the page.
+
+
+// This function handles events where one button is clicked
+$("#submit").on("click", function() {
+	// event.preventDefault() prevents the form from trying to submit itself.
+	// We're using a form so that the user can hit enter instead of clicking the button if they want
+	event.preventDefault();
+
+	// This line will grab the text from the input box
+	var searchTerm = $("#input").val().trim();
+
+	console.log (searchTerm);
+	// The input from the textbox is then added to our array
+	topics.push(searchTerm);
+
+	console.log (topics);
+
+	console.log("new input = " + searchTerm);
+
+	// calling renderButtons which handles the processing of our array
+	renderButtons(topics);
+	$("#gifs").empty();
+	generateGifs(topics, searchTerm);
+	console.log (topics);
+});
+
+// ================================================================================
+// GIPHY API
+// When the user clicks on a button, the page should grab 10 static, non-animated gif images from the GIPHY API and place them on the page.
+
+$(".category-btn").on("click", function(){
+	event.preventDefault();
+	var searchTerm = $(this).attr("data-input");
+	generateGifs(topics, searchTerm)
 });
 
 // Animated Background Gradient
-
 
 var colors = new Array(
 	[62,35,255],
