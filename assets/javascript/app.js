@@ -1,11 +1,13 @@
 console.log ("app.js file has started.");
 // ================================================================================
 // Topic Array. Your app should take the topics in this array and create buttons in your HTML.
-var topics = ["bunny", "kitten", "puppy", "penguin", "panda", "hamster", "guinea pig", "hedgehog"];
+var topics = ["puppy", "kitten", "penguin", "panda", "hamster", "guinea pig", "hedgehog"];
 var i = 0; // for API Query URL
 
-console.log(topics)
+console.log(topics);
 
+// ---------- Define the number of GIPHY API search results shown-----------
+var numShown = 6;
 
 //------Buttons------
 
@@ -40,7 +42,7 @@ function renderButtons(topics) {
 
 	//Calling the function
 	renderButtons(topics);
-	generateGifs(topics, "bunny");
+	// generateGifs(topics, "bunny"); // Call bunny gif results on page load
 
 function generateGifs(topics, searchTerm){
 	//Clear any existing gifs
@@ -92,15 +94,17 @@ function generateGifs(topics, searchTerm){
 			// Add div and aaround image & rating
 
 			var imageCropper = $("<div>");
-			imageCropper.attr("class", "img-cropper")
+			imageCropper.attr("class", "img-cropper");
 			imageCropper.append(animalImage);
 
 			var imageContainerDiv = $("<div>");
-			imageContainerDiv.attr("class", "col-md-4")
+			imageContainerDiv.attr("class", "col-md-4 moreItems");
 			imageContainerDiv.append(imageCropper);
 			imageContainerDiv.append("<p> Rating: " + results[j].rating + "</p>");
 
 			$("#gifs").append(imageContainerDiv);
+
+			$(".moreItems").slice(0, numShown).show(); // select the first set of items to show after clicking a category button
 		}
 			
 		// ===== PLAY AND PAUSE WHEN CLICKING ON IMAGES =====//
@@ -125,7 +129,7 @@ function generateGifs(topics, searchTerm){
 }
 
 
-// ================================================================================
+// =============================================================================
 //---Function 2: Create Custom Buttons & Submit button on click event---
 // Add a form to your page takes the value from a user input box and adds it into your topics array. 
 // Then make a function call that takes each topic in the array remakes the buttons on the page.
@@ -165,3 +169,30 @@ $(".category-btn").on("click", function(){
 	generateGifs(topics, searchTerm)
 });
 
+
+// ========================================================================
+// Load More Function
+
+$( document ).ready(function (){
+	// $(".moreItems").slice(0,9).show(); // select the first ten
+	if ($(".moreItems:hidden").length != 0) {
+		$("#loadMore").show();
+	  };
+
+    $("#loadMore").click(function(e){ // click event for load more
+		e.preventDefault();
+
+		// If no category button was clicked		
+		if($(".moreItems").length == 0) {
+			alert("Please select a gif category first.");
+		} else {
+			$(".moreItems:hidden").slice(0, numShown).show(); // select next set of hidden gifs and show them
+		}
+		
+		// If no more hidden search results
+		if($(".moreItems:hidden").length == 0 && $(".moreItems").length != 0 ){ // check if any hidden divs still exist
+			$("#loadMore").fadeOut('slow');
+			$("#alert").append("<h3>All search results have been displayed.</h3>");
+        }
+    });
+});
