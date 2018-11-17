@@ -126,6 +126,17 @@ footer {
   padding: 5px;
 }
 
+footer a:link {
+  color: #f7fa4e !important;
+}
+
+footer > a:visited,
+a:hover,
+a:focus,
+a:active {
+  color: #e4af02;
+}
+
 @media (min-width: 750px) {
   .search {
     border-right: 1px solid white;
