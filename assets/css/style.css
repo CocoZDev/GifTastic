@@ -232,10 +232,6 @@ input {
 .scroll-btn .fa {
   font-size: 30px;
   margin-top: 0px;
-  transition: 0.5s;
-  -moz-transition: 0.5s;
-  -webkit-transition: 0.5s;
-  -o-transition: 0.5s;
 }
 
 /* End of Scroll to Top Button */
