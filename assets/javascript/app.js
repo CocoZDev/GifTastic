@@ -1,19 +1,16 @@
 console.log ("app.js file has started.");
-// ================================================================================
-// Topic Array. The app should take the topics in this array and create buttons in the HTML.
+
+// ================ Topic Array. The app should take the topics in this array and create buttons in the HTML. ================
 var topics = ["puppy", "kitten", "penguin", "panda", "hamster", "guinea pig", "hedgehog"];
 var i = 0; // for API Query URL
 
-// ---------- Define the number of GIPHY API search results shown-----------
+// ================ Define the number of GIPHY API search results shown ================
 var numShown = 6;
 
 // This line will grab the text from the input box
 var searchTerm = "";
 
-//------Buttons------
-
-// ================================================================================
-// ---Function: rendering buttons---
+// -================ Function: rendering buttons ================
 
 function renderButtons(topics) {
 	
@@ -41,9 +38,7 @@ function renderButtons(topics) {
 	}
 }
 
-
-// ================================================================================
-// GIPHY API AJAX Call
+// ================ GIPHY API AJAX Call ================
 // When the user clicks on a button, the page should grab a set of static, non-animated gif images from the GIPHY API and place them on the page.
 
 function generateGifs(searchTerm){
@@ -54,8 +49,9 @@ function generateGifs(searchTerm){
 	// var searchTerm = $(this).attr("data-input");
 	var limit = 30;
 
-    var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=95ad6144828c471dbb77004f8e9e8d7f" + "&q=" + searchTerm + "&limit=" + limit;
-    console.log(queryURL);
+	var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=95ad6144828c471dbb77004f8e9e8d7f" + "&q=" + searchTerm + "&limit=" + limit;
+	
+    console.log("query URL:" + queryURL);
 
 	// Perfoming an AJAX GET request to our queryURL
 	$.ajax({
@@ -109,8 +105,7 @@ function generateGifs(searchTerm){
 			$(".moreItems").slice(0, numShown).show(); // select the first set of items to show after clicking a category button
 		}
 			
-		// ===== PLAY AND PAUSE WHEN CLICKING ON IMAGES =====//
-
+		// ================ PLAY AND PAUSE WHEN CLICKING ON IMAGES ================//
 
 		// When the user clicks one of the still GIPHY images, the gif should animate. If the user clicks the gif again, it should stop playing.
 		$(".gif").on("click", function() {
@@ -130,66 +125,61 @@ function generateGifs(searchTerm){
 	});
 }
 
-
-// =============================================================================
-//---Function: Create Custom Buttons & Submit button on click event---
-// Add a form to the page takes the value from a user input box and adds it into the topics array. 
-// Then make a function call that takes each topic in the array remakes the buttons on the page.
-
-
-// This function handles events when submit button is clicked
-$("#submit").on("click", function() {
-	
-	event.preventDefault(); // Prevent the form from trying to submit itself. We're using a form so that the user can hit enter instead of clicking the button if they want
-
-	// This line will grab the text from the input box
-	searchTerm = $("#input").val().trim();
-
-	// Check if a search term was empty. If not empty, render buttons and generate gifs
-	if (searchTerm == "") {
-		alert ("Please type in a gif category and try again.")
-	} else {
-
-		// The input from the textbox is then added to our array
-		topics.push(searchTerm);	
-		
-		// calling renderButtons which handles the processing of our array
-		renderButtons(topics);
-		generateGifs(searchTerm);
-
-		console.log ("new input = " + searchTerm);
-		console.log ("topics = " + topics);
-	
-		// Reset the form
-		document.getElementById("form").reset();
-	}
-
-});
-
-// ==========================================================================
-// Function: Category Button On-click Event
-
-$(".category-btn").on("click", function(){
-	console.log("category-btn was clicked.");
-	event.preventDefault();
-	searchTerm = $(this).attr("data-input");
-	generateGifs(searchTerm);
-	alert ("category-btn was clicked. searchTerm captured:" + searchTerm);
-});
-
-
-// ========================================================================
-// Calling Functions
+// ================ Calling Functions ================
 
 $( document ).ready(function (){
 
 	console.log ("ready!");
 
-	//Generate buttons
+	// ================ Generate buttons ================
 	renderButtons(topics);
 	// generateGifs("bunny"); // Call bunny gif results on page load
 
-	// Load More
+	// ================ Function: Category Button On-click Event ================
+
+	$(".category-btn").on("click", function(){
+		console.log("category-btn was clicked.");
+		event.preventDefault();
+		searchTerm = $(this).attr("data-input");
+		generateGifs(searchTerm);
+		alert ("category-btn was clicked. searchTerm captured:" + searchTerm);
+	});
+
+	// ================ Function: Create Custom Buttons & Submit button on click event ================
+	// Add a form to the page takes the value from a user input box and adds it into the topics array. 
+	// Then make a function call that takes each topic in the array remakes the buttons on the page.
+
+
+	// This function handles events when submit button is clicked
+	$("#submit").on("click", function() {
+		
+		event.preventDefault(); // Prevent the form from trying to submit itself. We're using a form so that the user can hit enter instead of clicking the button if they want
+
+		// This line will grab the text from the input box
+		searchTerm = $("#input").val().trim();
+
+		// Check if a search term was empty. If not empty, render buttons and generate gifs
+		if (searchTerm == "") {
+			alert ("Please type in a gif category and try again.")
+		} else {
+
+			// The input from the textbox is then added to our array
+			topics.push(searchTerm);	
+			
+			// calling renderButtons which handles the processing of our array
+			renderButtons(topics);
+			generateGifs(searchTerm);
+
+			console.log ("new input = " + searchTerm);
+			console.log ("topics = " + topics);
+		
+			// Reset the form
+			document.getElementById("form").reset();
+		}
+
+	});
+
+	// ================ Load More ================
 	// $(".moreItems").slice(0,9).show(); // select the first ten
 	if ($(".moreItems:hidden").length != 0) {
 		$("#loadMore").show();
