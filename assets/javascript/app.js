@@ -136,19 +136,18 @@ $( document ).ready(function (){
 	// generateGifs("bunny"); // Call bunny gif results on page load
 
 	// ================ Function: Category Button On-click Event ================
-	$(".btn").on("click", function(){
-		alert ("Current searchTerm:" + searchTerm);
-	});
+	// $(".btn").on("click", function(){
+	// 	alert ("Current searchTerm by clicking .btn:" + searchTerm);
+	// });
 	
 
 	$(".category-btn").on("click", function(){
-		$("#gifs").empty();
-		alert ("category-btn was clicked. Current searchTerm:" + searchTerm);
-		console.log("category-btn was clicked.");
 		event.preventDefault();
+		// alert ("category-btn was clicked. Current searchTerm:" + searchTerm);
+		console.log("category-btn was clicked.");
 		searchTerm = $(this).attr("data-input");
 		generateGifs(searchTerm);
-		alert ("category-btn was clicked. Current searchTerm:" + searchTerm);
+		// alert ("category-btn was clicked. Current searchTerm:" + searchTerm);
 	});
 
 	// ================ Function: Create Custom Buttons & Submit button on click event ================
@@ -166,26 +165,29 @@ $( document ).ready(function (){
 
 		// Check if a search term was empty. If not empty, render buttons and generate gifs
 		if (newSearchTerm == "") {
-			alert ("Please type in a gif category and try again.")
+			alert ("Please type in a GIF category and try again.")
 		} else {
 
-			searchTerm = newSearchTerm;
+			// searchTerm = newSearchTerm;
 
 			// The input from the textbox is then added to our array
-			topics.push(searchTerm);	
-			// topics.concat(searchTerm);
+			topics.push(newSearchTerm);	
 			
 			// calling renderButtons which handles the processing of our array
 			renderButtons(topics);
-			generateGifs(searchTerm);
+			generateGifs(newSearchTerm);
 
-			console.log ("new input = " + searchTerm);
+			console.log ("new input = " + newSearchTerm);
 			console.log ("topics = " + topics);
 		
 			// Reset the form
 			document.getElementById("form").reset();
 
-			alert ("searchTerm captured: " + searchTerm + ". New topics: " + topics);
+			// alert ("Current searchTerm by clicking submit btn: " + searchTerm + ". New topics: " + topics);
+
+			// Clear the searchTerm input 
+			var searchTerm = ""; 
+			// alert (searchTerm + "(searchTerm) cleared." + "Current topics: " + topics);
 		}
 
 	});
@@ -201,7 +203,7 @@ $( document ).ready(function (){
 
 		// If no category button was clicked		
 		if($(".moreItems").length == 0) {
-			alert("Please select a gif category first.");
+			alert("Please select a GIF category first.");
 		} else {
 			$(".moreItems:hidden").slice(0, numShown).show(); // select next set of hidden gifs and show them
 		}
