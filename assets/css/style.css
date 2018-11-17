@@ -73,25 +73,19 @@ h5,
 h6,
 body {
   font-family: "Nunito", sans-serif !important;
+  color: white !important;
 }
 
 h1,
 h2,
 h3 {
   font-weight: 700 !important;
-  color: white;
   text-shadow: 2px 2px 5px black;
+  color: #f7fa4e !important;
 }
 
 h1 {
   padding: 10px 0 15px 0;
-  color: #f7fa4e !important;
-}
-
-.container {
-  color: white;
-  padding: 0;
-  margin: 0;
 }
 
 .gif-container p {
