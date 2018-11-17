@@ -4,10 +4,11 @@ console.log ("app.js file has started.");
 var topics = ["puppy", "kitten", "penguin", "panda", "hamster", "guinea pig", "hedgehog"];
 var i = 0; // for API Query URL
 
-console.log(topics);
-
 // ---------- Define the number of GIPHY API search results shown-----------
 var numShown = 6;
+
+// This line will grab the text from the input box
+var searchTerm = "";
 
 //------Buttons------
 
@@ -40,11 +41,7 @@ function renderButtons(topics) {
 	}
 }
 
-	//Calling the function
-	renderButtons(topics);
-	// generateGifs(topics, "bunny"); // Call bunny gif results on page load
-
-function generateGifs(topics, searchTerm){
+function generateGifs(searchTerm){
 	//Clear any existing gifs
 	$("#gifs").empty();
 
@@ -137,30 +134,26 @@ function generateGifs(topics, searchTerm){
 
 // This function handles events where one button is clicked
 $("#submit").on("click", function() {
-	// event.preventDefault() prevents the form from trying to submit itself.
-	// We're using a form so that the user can hit enter instead of clicking the button if they want
-	event.preventDefault();
+	
+	event.preventDefault(); // Prevent the form from trying to submit itself. We're using a form so that the user can hit enter instead of clicking the button if they want
 
 	// This line will grab the text from the input box
-	var searchTerm = $("#input").val().trim();
+	searchTerm = $("#input").val().trim();
 
 	// Check if a search term was empty. If not empty, render buttons and generate gifs
 	if (searchTerm == "") {
 		alert ("Please type in a gif category and try again.")
 	} else {
-		console.log (searchTerm);
+
 		// The input from the textbox is then added to our array
-		topics.push(searchTerm);
-	
-		console.log (topics);
-	
-		console.log("new input = " + searchTerm);
-	
+		topics.push(searchTerm);	
+		
 		// calling renderButtons which handles the processing of our array
 		renderButtons(topics);
-		$("#gifs").empty();
-		generateGifs(topics, searchTerm);
-		console.log (topics);
+		generateGifs(searchTerm);
+
+		console.log ("new input = " + searchTerm);
+		console.log ("topics = " + topics);
 	
 		// Reset the form
 		document.getElementById("form").reset();
@@ -172,18 +165,36 @@ $("#submit").on("click", function() {
 // GIPHY API
 // When the user clicks on a button, the page should grab a set of static, non-animated gif images from the GIPHY API and place them on the page.
 
-$(".category-btn").on("click", function(){
-	console.log("category-btn was clicked.")
-	event.preventDefault();
-	var searchTerm = $(this).attr("data-input");
-	generateGifs(topics, searchTerm);
-});
+// $(".category-btn").on("click", function(){
+// 	console.log("category-btn was clicked.");
+// 	event.preventDefault();
+// 	searchTerm = $(this).attr("data-input");
+// 	generateGifs(searchTerm);
+// 	alert ("category-btn was clicked. searchTerm captured:" + searchTerm);
+// });
 
 
 // ========================================================================
-// Load More Function
+// Call Functions
 
 $( document ).ready(function (){
+
+	console.log ("ready!");
+
+	//Generate buttons
+	renderButtons(topics);
+	// generateGifs("bunny"); // Call bunny gif results on page load
+
+	// Use button attribute to generate gifs
+	$(".category-btn").on("click", function(){
+		console.log("category-btn was clicked.");
+		event.preventDefault();
+		searchTerm = $(this).attr("data-input");
+		generateGifs(searchTerm);
+		alert ("category-btn was clicked. searchTerm captured:" + searchTerm);
+	});
+
+	// Load More
 	// $(".moreItems").slice(0,9).show(); // select the first ten
 	if ($(".moreItems:hidden").length != 0) {
 		$("#loadMore").show();

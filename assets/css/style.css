@@ -173,12 +173,12 @@ footer {
 .btn-primary:active,
 .btn-primary.active,
 .open > .dropdown-toggle.btn-primary {
-  background: #f7fa4e !important;
+  background: #f3ba00 !important;
 }
 
 .btn-primary:active,
 .btn-primary.active {
-  background: #f7fa4e !important;
+  background: #f3ba00 !important;
   border: none !important;
 }
 
