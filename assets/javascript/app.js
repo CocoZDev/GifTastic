@@ -136,13 +136,19 @@ $( document ).ready(function (){
 	// generateGifs("bunny"); // Call bunny gif results on page load
 
 	// ================ Function: Category Button On-click Event ================
+	$(".btn").on("click", function(){
+		alert ("Current searchTerm:" + searchTerm);
+	});
+	
 
 	$(".category-btn").on("click", function(){
+		$("#gifs").empty();
+		alert ("category-btn was clicked. Current searchTerm:" + searchTerm);
 		console.log("category-btn was clicked.");
 		event.preventDefault();
 		searchTerm = $(this).attr("data-input");
 		generateGifs(searchTerm);
-		alert ("category-btn was clicked. searchTerm captured:" + searchTerm);
+		alert ("category-btn was clicked. Current searchTerm:" + searchTerm);
 	});
 
 	// ================ Function: Create Custom Buttons & Submit button on click event ================
@@ -156,15 +162,18 @@ $( document ).ready(function (){
 		event.preventDefault(); // Prevent the form from trying to submit itself. We're using a form so that the user can hit enter instead of clicking the button if they want
 
 		// This line will grab the text from the input box
-		searchTerm = $("#input").val().trim();
+		newSearchTerm = $("#input").val().trim();
 
 		// Check if a search term was empty. If not empty, render buttons and generate gifs
-		if (searchTerm == "") {
+		if (newSearchTerm == "") {
 			alert ("Please type in a gif category and try again.")
 		} else {
 
+			searchTerm = newSearchTerm;
+
 			// The input from the textbox is then added to our array
 			topics.push(searchTerm);	
+			// topics.concat(searchTerm);
 			
 			// calling renderButtons which handles the processing of our array
 			renderButtons(topics);
@@ -175,6 +184,8 @@ $( document ).ready(function (){
 		
 			// Reset the form
 			document.getElementById("form").reset();
+
+			alert ("searchTerm captured: " + searchTerm + ". New topics: " + topics);
 		}
 
 	});
