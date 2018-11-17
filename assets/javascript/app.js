@@ -13,7 +13,7 @@ var searchTerm = "";
 //------Buttons------
 
 // ================================================================================
-// ---Function 1: rendering buttons---
+// ---Function: rendering buttons---
 
 function renderButtons(topics) {
 	
@@ -40,6 +40,11 @@ function renderButtons(topics) {
 		$("#category-btns-wrapper").append(a);
 	}
 }
+
+
+// ================================================================================
+// GIPHY API AJAX Call
+// When the user clicks on a button, the page should grab a set of static, non-animated gif images from the GIPHY API and place them on the page.
 
 function generateGifs(searchTerm){
 	//Clear any existing gifs
@@ -127,12 +132,12 @@ function generateGifs(searchTerm){
 
 
 // =============================================================================
-//---Function 2: Create Custom Buttons & Submit button on click event---
+//---Function: Create Custom Buttons & Submit button on click event---
 // Add a form to the page takes the value from a user input box and adds it into the topics array. 
 // Then make a function call that takes each topic in the array remakes the buttons on the page.
 
 
-// This function handles events where one button is clicked
+// This function handles events when submit button is clicked
 $("#submit").on("click", function() {
 	
 	event.preventDefault(); // Prevent the form from trying to submit itself. We're using a form so that the user can hit enter instead of clicking the button if they want
@@ -161,21 +166,20 @@ $("#submit").on("click", function() {
 
 });
 
-// ================================================================================
-// GIPHY API
-// When the user clicks on a button, the page should grab a set of static, non-animated gif images from the GIPHY API and place them on the page.
+// ==========================================================================
+// Function: Category Button On-click Event
 
-// $(".category-btn").on("click", function(){
-// 	console.log("category-btn was clicked.");
-// 	event.preventDefault();
-// 	searchTerm = $(this).attr("data-input");
-// 	generateGifs(searchTerm);
-// 	alert ("category-btn was clicked. searchTerm captured:" + searchTerm);
-// });
+$(".category-btn").on("click", function(){
+	console.log("category-btn was clicked.");
+	event.preventDefault();
+	searchTerm = $(this).attr("data-input");
+	generateGifs(searchTerm);
+	alert ("category-btn was clicked. searchTerm captured:" + searchTerm);
+});
 
 
 // ========================================================================
-// Call Functions
+// Calling Functions
 
 $( document ).ready(function (){
 
@@ -184,15 +188,6 @@ $( document ).ready(function (){
 	//Generate buttons
 	renderButtons(topics);
 	// generateGifs("bunny"); // Call bunny gif results on page load
-
-	// Use button attribute to generate gifs
-	$(".category-btn").on("click", function(){
-		console.log("category-btn was clicked.");
-		event.preventDefault();
-		searchTerm = $(this).attr("data-input");
-		generateGifs(searchTerm);
-		alert ("category-btn was clicked. searchTerm captured:" + searchTerm);
-	});
 
 	// Load More
 	// $(".moreItems").slice(0,9).show(); // select the first ten
