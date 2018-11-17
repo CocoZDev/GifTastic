@@ -108,7 +108,7 @@ function generateGifs(searchTerm){
 		// ================ PLAY AND PAUSE WHEN CLICKING ON IMAGES ================//
 
 		// When the user clicks one of the still GIPHY images, the gif should animate. If the user clicks the gif again, it should stop playing.
-		$(".gif").on("click", function() {
+		$(".gif").hover(function() {
 			// The attr jQuery method allows us to get or set the value of any attribute on our HTML element
 			var state = $(this).attr("data-state");
 			// If the clicked image's state is still, update its src attribute to what its data-animate value is.
