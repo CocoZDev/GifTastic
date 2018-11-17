@@ -18,7 +18,7 @@ body {
   font-size: 18px;
   text-align: center;
   color: #fff;
-  background: linear-gradient(-45deg, #01fc37, #01ebfc, #4c01fc, #ff00ea, #ff428a);
+  background: linear-gradient(-45deg, #01fc6a, #01ebfc, #4c01fc, #d400ff, #ff428a);
   background-size: 300% 300%;
   /* Fixed Background Image */
   background-repeat: no-repeat;
