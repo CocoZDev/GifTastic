@@ -85,7 +85,7 @@ h3 {
 
 h1 {
   padding: 10px 0 15px 0;
-  color: #fad24e !important;
+  color: #f7fa4e !important;
 }
 
 h4 {
@@ -115,7 +115,7 @@ h4 {
 }
 
 .img-cropper:hover {
-  border: 5px solid #fa4ea4;
+  border: 5px solid #f7fa4e;
   height: auto;
 }
 
@@ -162,7 +162,7 @@ footer {
 }
 
 .btn-primary {
-  background: #fad24e !important;
+  background: #f7fa4e !important;
   color: black !important;
   box-shadow: 2px 2px 5px black;
   border: none !important;
@@ -173,12 +173,12 @@ footer {
 .btn-primary:active,
 .btn-primary.active,
 .open > .dropdown-toggle.btn-primary {
-  background: #fad24e !important;
+  background: #f7fa4e !important;
 }
 
 .btn-primary:active,
 .btn-primary.active {
-  background: #fad24e !important;
+  background: #f7fa4e !important;
   border: none !important;
 }
 
