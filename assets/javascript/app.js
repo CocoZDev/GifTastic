@@ -1,7 +1,7 @@
 console.log ("app.js file has started.");
 
 // ================ Topic Array. The app should take the topics in this array and create buttons in the HTML. ================
-var topics = ["puppy", "kitten", "penguin", "panda", "hamster", "guinea pig", "hedgehog"];
+var topics = ["Puppy", "Kitten", "Squirrel", "Parrot", "Hamster", "Guinea Pig", "Hedgehog", "Deer", "Koala", "Otter"];
 var i = 0; // for API Query URL
 
 // ================ Define the number of GIPHY API search results shown ================
@@ -49,7 +49,7 @@ function generateGifs(searchTerm){
 	// var searchTerm = $(this).attr("data-input");
 	var limit = 30;
 
-	var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=95ad6144828c471dbb77004f8e9e8d7f" + "&q=" + searchTerm + "&limit=" + limit;
+	var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=95ad6144828c471dbb77004f8e9e8d7f" + "&q=funny+" + searchTerm + "&limit=" + limit;
 	
     console.log("query URL:" + queryURL);
 
