@@ -18,7 +18,7 @@ function renderButtons(topics) {
 	
 	// Deleting the animal buttons prior to adding new animal buttons
 	// (this is necessary otherwise we will have repeat buttons)
-	$("#buttons").empty();
+	$("#category-btns-wrapper").empty();
 
 	//Try using a loop that appends a button for each string in the array.
 	// Looping through the array of itmes
@@ -36,7 +36,7 @@ function renderButtons(topics) {
 		// Providing the button's text with a value of the animal at index i
 		a.text(topics[i]);
 		// Adding the button to the HTML
-		$("#buttons").append(a);
+		$("#category-btns-wrapper").append(a);
 	}
 }
 

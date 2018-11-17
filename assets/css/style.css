@@ -182,14 +182,14 @@ footer {
   border: none !important;
 }
 
-.btn-lg.round {
-  border-radius: 24px;
-}
-
 .moreItems {
   display: none;
 }
 
 #alert {
   margin-bottom: 30px;
+}
+
+.category-btn {
+  float: left;
 }
