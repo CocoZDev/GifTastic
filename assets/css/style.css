@@ -140,37 +140,31 @@ footer {
 .btn {
   padding: 14px 24px;
   margin: 10px;
-  border: 0 none;
+  border: 2px solid black;
   font-weight: 1000 !important;
   letter-spacing: 1px;
   text-transform: uppercase;
 }
 
-.btn:focus,
+/* .btn:focus,
 .btn:active:focus,
 .btn.active:focus {
   outline: 0 none;
-}
+} */
 
 .btn-primary {
   background: #f7fa4e !important;
   color: black !important;
   box-shadow: 2px 2px 5px black;
-  border: none !important;
 }
 
 .btn-primary:hover,
-.btn-primary:focus,
+.btn-primary:focus:not(.no-sticky-focus),
 .btn-primary:active,
 .btn-primary.active,
 .open > .dropdown-toggle.btn-primary {
   background: #f3ba00 !important;
-}
-
-.btn-primary:active,
-.btn-primary.active {
-  background: #f3ba00 !important;
-  border: none !important;
+  box-shadow: none;
 }
 
 .moreItems {
@@ -189,4 +183,51 @@ footer {
   margin-top: 0px;
 }
 
+/* Scroll to Top Button */
 
+.scrolltop {
+  display: none;
+  width: 100%;
+  margin: 0 auto;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  z-index: 5000; 
+}
+
+.scroll-btn {
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  background: #f7fa4e;
+  border: 1.5px solid black;
+  box-shadow: 2px 2px 5px black;
+  padding: 10px;
+  text-align: center;
+  margin: 0 0 0 0;
+  cursor: pointer;
+  transition: 0.5s;
+  -moz-transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  border-radius: 5px; }
+
+.scroll-btn:hover {
+  background-color: #f3ba00; }
+
+.scroll-btn a {
+  color: black; }
+
+.scroll-btn a:hover {
+  color: rgb(17, 17, 17) !important;
+  text-decoration: none; }
+
+.scroll-btn .fa {
+  font-size: 30px;
+  margin-top: 0px;
+  transition: 0.5s;
+  -moz-transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s; }
+
+/* End of Scroll to Top Button */

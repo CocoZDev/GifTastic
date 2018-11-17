@@ -21,71 +21,93 @@
 	crossorigin="anonymous"></script>
 
 	<!-- Fontawesome CDN -->
-	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+	crossorigin="anonymous">
 	
 </head>
 
 <body id="gradient">
 
-	<div class="container">
-		<!-- Row #1: Title -->
-		<div class="row">
-			<div class="col-xs-12">
-				<h1>GIFTastic - Funny Animal GIFs</h1>				
-				<h4>Check out these funny and adorable animal gifs to brighten up your day.</h4>
-				<h4>Click on the GIF category buttons or create a new GIF category of your choice!</h4>
-				<h3>Have a great day! &#9786;</h3>
-				<hr>
+	<main>
+		<!-- Scroll To Top Button -->
+		<div class='scrolltop'>
+			<div class='scroll-btn icon'>
+				<a href="#gradient"><i class="fa fa-2x fa-angle-up"></i></a>            
 			</div>
 		</div>
+		<!-- End of Scroll To Top Button -->
 
-		<!-- Row #2: Buttons   -->
-		<div class="row">
-			<div class="col-xs-12 col-sm-6 search column">
-				<h3>Search GIFs by Category:</h3>
-				<div id="category-btns-wrapper"></div>
-			</div>			
-		
-		<!-- Row #2: Form with Custom Input -->		
-			<div class="col-xs-12 col-sm-5 col-sm-offset-1 column">
-				<form class="form" id="form">
-				  <div class="form-group">
-					<label for="animalInput"><h3>Add a New GIF Category:</h3></label>
-						<input type="text" class="form-control" id="input" placeholder='Please type in a new gif category i.e. "bird"'>	
-						<br>
-					<button type="submit" class="btn btn-primary btn-md" id="submit">Submit</button>		  
-				</form>
-			</div>	
-		</div>
-
-		<!-- Row #3: horizaontal line -->
-		<div class="row">
-			<div class="col-xs-12">
-				<hr>
+		<div class="container">
+			<!-- Row #1: Title -->
+			<div class="row">
+				<div class="col-xs-12">
+					<h1>GIFTastic - Funny Animal GIFs</h1>				
+					<h4>Check out these funny and adorable animal gifs to brighten up your day.</h4>
+					<h4>Click on the GIF category buttons or create a new GIF category of your choice!</h4>
+					<h3>Have a great day! &#9786;</h3>
+					<hr>
+				</div>
 			</div>
-		</div>
+			<!-- End of Row #1: Title -->
 
-		<!-- Row #4: GIF Images -->
-		<div class="row">
-			<div class="col-xs-12 gif-container">
-				<h3>GIF Images Search Results:</h3>
-				<h4>Hover your mouse over the GIF images to play the animation.</h4>
-				
-				<div id="gifs">
+			<!-- Row #2 -->
+			<!-- Buttons -->
+			<div class="row">
+				<div class="col-xs-12 col-sm-6 search column">
+					<h3>Search GIFs by Category:</h3>
+					<div id="category-btns-wrapper"></div>
+				</div>			
+			
+				<!-- Form with Custom Input -->		
+				<div class="col-xs-12 col-sm-5 col-sm-offset-1 column">
+					<form class="form" id="form">
+					<div class="form-group">
+						<label for="animalInput"><h3>Add a New GIF Category:</h3></label>
+							<input type="text" class="form-control" id="input" placeholder='Please type in a new GIF category i.e. "duckling, baby elephant"'>	
+							<br>
+						<button type="submit" class="btn btn-primary btn-md no-sticky-focus" id="submit">Submit</button>		  
+					</form>
+				</div>	
+			</div>
+			<!-- End of Row #2 -->
+
+			<!-- Row #3: horizaontal line -->
+			<div class="row">
+				<div class="col-xs-12">
+					<hr>
+				</div>
+			</div>
+			<!-- End of Row #3: horizaontal line -->
+
+			<!-- Row #4: GIF Images -->
+			<div class="row">
+				<div class="col-xs-12 gif-container">
+					<h3>GIF Images Search Results:</h3>
+					<h4>Hover your mouse over the GIF images to play the animation.</h4>
 					
+					<div id="gifs">
+						
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="row">
-			<div class="col-xs-12">
-				<div id="loadMore">
-					<a href="#" class="btn btn-primary">Load More</a>
-				</div>
-				<div id="alert">
+			<!-- End of Row #4: GIF Images -->
+
+			<!-- Row #5: Load More Button and Alert Message -->
+			<div class="row">
+				<div class="col-xs-12">
+					<div id="loadMore">
+						<a href="#" class="btn btn-primary no-sticky-focus">Load More</a>
+					</div>
+					<div id="alert">
+					</div>
 				</div>
 			</div>
+			<!-- End of Row #5: Load More Button and Alert Message -->
+			
 		</div>
-	</div>
+
+	</main>
+
 <footer>
 	<image src="assets/images/Poweredby_100px_Badge.gif" ></image>
 	Created by Guiyu Zhao.

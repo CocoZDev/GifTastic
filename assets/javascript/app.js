@@ -1,7 +1,7 @@
 console.log ("app.js file has started.");
 
 // ================ Topic Array. The app should take the topics in this array and create buttons in the HTML. ================
-var topics = ["Puppy", "Kitten", "Squirrel", "Parrot", "Hamster", "Guinea Pig", "Hedgehog", "Deer", "Koala", "Otter"];
+var topics = ["Puppy", "Kitten", "Squirrel", "Parrot", "Hamster", "Guinea Pig", "Hedgehog", "Bunny", "Chinchilla"];
 var i = 0; // for API Query URL
 
 // ================ Define the number of GIPHY API search results shown ================
@@ -213,5 +213,30 @@ $( document ).ready(function (){
 			$("#loadMore").fadeOut('slow');
 			$("#alert").append("<h3>All search results have been displayed.</h3>");
         }
-    });
+	});
+	
+	// ========== Smooth Scroll To Top Button - https://codepen.io/kruxor/pen/CwpFq ========== //
+
+	$(window).scroll(function() {
+		if ($(this).scrollTop() > 50) {
+		$('.scrolltop:hidden')
+			.stop(true, true)
+			.fadeIn();
+		} else {
+		$('.scrolltop')
+			.stop(true, true)
+			.fadeOut();
+		}
+	});
+	
+	$(function() {
+		$('.scroll-btn').click(function() {
+		$('html,body').animate({ scrollTop: $('#gradient').offset().top - 50}, '500');
+		return false;
+		});
+	});
+
+
 });
+
+
