@@ -148,6 +148,10 @@ $( document ).ready(function (){
 		searchTerm = $(this).attr("data-input");
 		generateGifs(searchTerm);
 		// alert ("category-btn was clicked. Current searchTerm:" + searchTerm);
+
+		// Clear alert message and display load more button 
+		$("#loadMore").show();
+		$("#alert").empty();
 	});
 
 	// ================ Function: Create Custom Buttons & Submit button on click event ================
@@ -183,6 +187,10 @@ $( document ).ready(function (){
 			// Reset the form
 			document.getElementById("form").reset();
 
+			// Clear alert message and display load more button 
+			$("#loadMore").show();
+			$("#alert").empty();
+
 			// alert ("Current searchTerm by clicking submit btn: " + searchTerm + ". New topics: " + topics);
 
 			// Clear the searchTerm input 
@@ -194,9 +202,9 @@ $( document ).ready(function (){
 
 	// ================ Load More ================
 	// $(".moreItems").slice(0,9).show(); // select the first ten
-	if ($(".moreItems:hidden").length != 0) {
-		$("#loadMore").show();
-	  };
+	// if ($(".moreItems:hidden").length != 0) {
+	// 	$("#loadMore").show();
+	//   };
 
     $("#loadMore").click(function(e){ // click event for load more
 		e.preventDefault();
@@ -210,7 +218,7 @@ $( document ).ready(function (){
 		
 		// If no more hidden search results
 		if($(".moreItems:hidden").length == 0 && $(".moreItems").length != 0 ){ // check if any hidden divs still exist
-			$("#loadMore").fadeOut('slow');
+			$("#loadMore").hide();
 			$("#alert").append("<h3>All search results have been displayed.</h3>");
         }
 	});
