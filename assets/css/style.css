@@ -131,7 +131,7 @@ footer {
   .search {
     border-right: 1px solid white;
   }
-  
+
   .column h3 {
     margin-top: 0;
   }
@@ -140,7 +140,7 @@ footer {
 .btn {
   padding: 14px 24px;
   margin: 10px;
-  border: 2px solid black;
+  border: 1.5px solid black !important;
   font-weight: 1000 !important;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -161,9 +161,8 @@ footer {
 .btn-primary:hover,
 .btn-primary:focus:not(.no-sticky-focus),
 .btn-primary:active,
-.btn-primary.active,
-.open > .dropdown-toggle.btn-primary {
-  background: #f3ba00 !important;
+.btn-primary.active {
+  background: #e4af02 !important;
   box-shadow: none;
 }
 
@@ -179,6 +178,10 @@ footer {
   float: left;
 }
 
+input {
+  border: 1.5px solid black !important;
+}
+
 #submit {
   margin-top: 0px;
 }
@@ -192,7 +195,7 @@ footer {
   position: fixed;
   bottom: 10px;
   right: 10px;
-  z-index: 5000; 
+  z-index: 5000;
 }
 
 .scroll-btn {
@@ -206,21 +209,21 @@ footer {
   text-align: center;
   margin: 0 0 0 0;
   cursor: pointer;
-  transition: 0.5s;
-  -moz-transition: 0.5s;
-  -webkit-transition: 0.5s;
-  -o-transition: 0.5s;
-  border-radius: 5px; }
+  border-radius: 5px;
+}
 
 .scroll-btn:hover {
-  background-color: #f3ba00; }
+  background-color: #e4af02;
+}
 
 .scroll-btn a {
-  color: black; }
+  color: black;
+}
 
 .scroll-btn a:hover {
   color: rgb(17, 17, 17) !important;
-  text-decoration: none; }
+  text-decoration: none;
+}
 
 .scroll-btn .fa {
   font-size: 30px;
@@ -228,6 +231,7 @@ footer {
   transition: 0.5s;
   -moz-transition: 0.5s;
   -webkit-transition: 0.5s;
-  -o-transition: 0.5s; }
+  -o-transition: 0.5s;
+}
 
 /* End of Scroll to Top Button */
