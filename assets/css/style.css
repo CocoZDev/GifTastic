@@ -18,15 +18,15 @@ body {
   font-size: 18px;
   text-align: center;
   color: #fff;
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-  background-size: 400% 400%;
+  background: linear-gradient(-45deg, #01fc37, #01ebfc, #4c01fc, #ff00ea, #ff428a);
+  background-size: 300% 300%;
   /* Fixed Background Image */
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
-  -webkit-animation: Gradient 15s ease infinite;
-  -moz-animation: Gradient 15s ease infinite;
-  animation: Gradient 15s ease infinite;
+  -webkit-animation: Gradient 20s ease infinite;
+  -moz-animation: Gradient 20s ease infinite;
+  animation: Gradient 20s ease infinite;
 }
 
 @-webkit-keyframes Gradient {
@@ -88,6 +88,11 @@ h1 {
   padding: 10px 0 15px 0;
 }
 
+p {
+  color: black;
+  font-weight: 600;
+}
+
 .gif-container p {
   text-transform: uppercase;
   padding: 20px;
@@ -139,12 +144,6 @@ footer {
   letter-spacing: 1px;
   text-transform: uppercase;
 }
-
-/* .btn:focus,
-.btn:active:focus,
-.btn.active:focus {
-  outline: 0 none;
-} */
 
 .btn-primary {
   background: #f7fa4e !important;
