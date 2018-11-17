@@ -1,6 +1,6 @@
 console.log ("app.js file has started.");
 // ================================================================================
-// Topic Array. Your app should take the topics in this array and create buttons in your HTML.
+// Topic Array. The app should take the topics in this array and create buttons in the HTML.
 var topics = ["puppy", "kitten", "penguin", "panda", "hamster", "guinea pig", "hedgehog"];
 var i = 0; // for API Query URL
 
@@ -131,7 +131,7 @@ function generateGifs(topics, searchTerm){
 
 // =============================================================================
 //---Function 2: Create Custom Buttons & Submit button on click event---
-// Add a form to your page takes the value from a user input box and adds it into your topics array. 
+// Add a form to the page takes the value from a user input box and adds it into the topics array. 
 // Then make a function call that takes each topic in the array remakes the buttons on the page.
 
 
@@ -173,6 +173,7 @@ $("#submit").on("click", function() {
 // When the user clicks on a button, the page should grab a set of static, non-animated gif images from the GIPHY API and place them on the page.
 
 $(".category-btn").on("click", function(){
+	console.log("category-btn was clicked.")
 	event.preventDefault();
 	var searchTerm = $(this).attr("data-input");
 	generateGifs(topics, searchTerm);
