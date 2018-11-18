@@ -135,25 +135,6 @@ $( document ).ready(function (){
 	renderButtons(topics);
 	// generateGifs("bunny"); // Call bunny gif results on page load
 
-	// ================ Function: Category Button On-click Event ================
-	// $(".btn").on("click", function(){
-	// 	alert ("Current searchTerm by clicking .btn:" + searchTerm);
-	// });
-	
-
-	$(".category-btn").on("click", function(){
-		event.preventDefault();
-		// alert ("category-btn was clicked. Current searchTerm:" + searchTerm);
-		console.log("category-btn was clicked.");
-		searchTerm = $(this).attr("data-input");
-		generateGifs(searchTerm);
-		// alert ("category-btn was clicked. Current searchTerm:" + searchTerm);
-
-		// Clear alert message and display load more button 
-		$("#loadMore").show();
-		$("#alert").empty();
-	});
-
 	// ================ Function: Create Custom Buttons & Submit button on click event ================
 	// Add a form to the page takes the value from a user input box and adds it into the topics array. 
 	// Then make a function call that takes each topic in the array remakes the buttons on the page.
@@ -190,14 +171,28 @@ $( document ).ready(function (){
 			// Clear alert message and display load more button 
 			$("#loadMore").show();
 			$("#alert").empty();
-
-			// alert ("Current searchTerm by clicking submit btn: " + searchTerm + ". New topics: " + topics);
-
-			// Clear the searchTerm input 
-			var searchTerm = ""; 
-			// alert (searchTerm + "(searchTerm) cleared." + "Current topics: " + topics);
 		}
 
+	});
+
+
+	// ================ Function: Category Button On-click Event ================
+	// Because the buttons are appended dynamically to the page, document.on() is needed to to capture the click events
+
+	$(document).on('click','.category-btn',function(e){
+
+		e.preventDefault();
+
+		console.log("category-btn was clicked.");
+		searchTerm = $(this).attr("data-input");
+		generateGifs(searchTerm);
+
+		// Clear alert message and display load more button 
+		$("#loadMore").show();
+		$("#alert").empty();
+		
+		return false;
+	
 	});
 
 	// ================ Load More ================
